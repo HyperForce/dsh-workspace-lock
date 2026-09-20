@@ -1,0 +1,9 @@
+# dsh-workspace-lock bundle patch: inserts the dual-face plugin row into the web
+# profile roster. Applied as a profile bundle layer (the `dsh.bundle.patch`
+# manifest field). The row is a bare plugin by package name: the node half
+# (exports ".") runs in the host process (routes on the web server), and the
+# `dsh.client` declaration in package.json makes the browser half
+# (exports "./client", served at /plugins/<id>/client.js) load in the web GUI.
+- insert:
+    - id: workspace-lock
+      name: dsh-workspace-lock
