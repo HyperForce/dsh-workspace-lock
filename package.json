@@ -1,7 +1,7 @@
 {
   "name": "dsh-workspace-lock",
   "description": "Per-workspace password locks for the DSH web GUI: bw-independent: right-click a workspace in the sidebar (own menu; injects into dsh-better-workspace context menu when available) to 加锁/解锁/移除锁; a locked workspace's sessions hide in the sidebar and the center column shows a lock screen until the password is entered (page-scoped; a refresh locks again). An admin master password (Settings → Plugins → dsh-workspace-lock) unlocks every workspace at once and authorizes any unlock/remove; it is stored only as a salted hash. UI-level lock only.",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
