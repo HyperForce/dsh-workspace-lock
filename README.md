@@ -42,8 +42,8 @@ becomes a lock screen until unlocked. Nothing else.
 
 ## Install / 安装
 
-Requires DSH >= 0.1.5-rc.1 (tested on 0.1.5-rc.2 and 0.1.7-rc.1) /
-要求 DSH >= 0.1.5-rc.1（在 0.1.5-rc.2 与 0.1.7-rc.1 上开发测试）：
+Requires DSH >= 0.1.5-rc.1 (tested on 0.1.5-rc.2, 0.1.7-rc.1 and 0.2.0-rc.1) /
+要求 DSH >= 0.1.5-rc.1（在 0.1.5-rc.2、0.1.7-rc.1 与 0.2.0-rc.1 上开发测试）：
 
 ```bash
 dsh plugin --profile web add link:/path/to/this/repo
@@ -63,9 +63,10 @@ volume) / 锁数据保存在 `<home>/.dsh/workspace-locks.json`（dsh-data 卷�
 
 ## Compatibility / 兼容性
 
-- 在 DSH 0.1.5-rc.2 与 0.1.7-rc.1 上开发测试，目标 >= 0.1.5-rc.1。客户端只
-  require 原生种子模块（`react`、`react-dom/client`），不依赖闭源的
-  `@deepseek-ai/dsh-client-runtime`，无构建步骤。
+- 在 DSH 0.1.5-rc.2、0.1.7-rc.1 与 0.2.0-rc.1 上开发测试，目标 >= 0.1.5-rc.1。
+  客户端只 require 原生种子模块（`react`、`react-dom/client`），不依赖闭源的
+  `@deepseek-ai/dsh-client-runtime`，无构建步骤；不声明 dsh 包 peerDependencies，
+  因此不受 0.2.0 起的插件版本门禁影响。
 - 0.1.7 移除了 `settings.register`，本插件改用 `plugins.bundle.config` 槽位
   提供设置页，同时保留 rc.2 时代的卡片注册，两个版本都能管理管理员密码。
 - dsh-better-workspace 0.11 / 0.14 / 0.23 的菜单注入均支持；无 better-workspace
