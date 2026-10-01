@@ -14,22 +14,17 @@ chat area becomes a lock screen until unlocked. Nothing else.
 
 ### Features
 
-- **Lock / unlock / remove lock** — right-click a workspace row: the plugin's
-  own menu opens immediately, and when the sidebar's native context menu shows
-  up (dsh-better-workspace 0.11 / 0.14 / 0.23 / 0.27, or the stock 0.1.7+
-  sidebar's row "…" menu) the same entries are injected into it with native
-  styling.
-- **Locked state** — a monochrome padlock badge on the workspace row, its
-  session rows hidden in the sidebar (search results included), and a lock
-  screen over the chat area while one of its sessions is open.
-- **Optional admin master password** (Settings → Plugins → dsh-workspace-lock)
-  — unlocks every workspace at once and can replace any workspace password for
-  unlock/remove; stored server-side as a salted hash only.
-- **Page-scoped unlock** — a browser refresh locks the page again.
+- Right-click a workspace → **加锁 / 解锁 / 移除锁**; the entries are injected
+  into the sidebar's native menu when present (dsh-better-workspace, or the
+  stock sidebar's row menu), otherwise the plugin's own menu is used.
+- A locked workspace shows a padlock badge, its sessions hide, and the chat
+  area shows a lock screen; a page refresh locks again.
+- Optional admin master password: unlocks every workspace at once
+  (Settings → Plugins → dsh-workspace-lock).
 
-> UI-level only: this hides things in the interface. It does not encrypt data
-> or gate server-side APIs — it guards against casual peeking, not deliberate
-> attacks.
+> UI-level only: hides interface content; no encryption, no server-side gating.
+
+Full history: [CHANGELOG.md](CHANGELOG.md).
 
 ### Install
 
@@ -53,15 +48,11 @@ volume) and survive restarts and reinstalls.
 
 ### Compatibility
 
-- Developed and tested on DSH 0.1.5-rc.2, 0.1.7-rc.1 and 0.2.0-rc.1/rc.2;
-  targets >= 0.1.5-rc.1. The client requires only the host seed modules
-  (`react`, `react-dom/client`), never imports the closed-source
-  `@deepseek-ai/dsh-client-runtime`, and has no build step. It declares no dsh
-  peerDependencies, so the plugin version gate introduced in 0.2.0 does not
-  apply.
-- Context-menu injection supports dsh-better-workspace 0.11 / 0.14 / 0.23 /
-  0.27 and the stock sidebar's row "…" menu; with neither present, the
-  plugin's own menu is used.
+- No dsh peerDependencies declared — the 0.2.0 plugin version gate does not
+  apply. The client requires only the host seed modules (`react`,
+  `react-dom/client`); no build step.
+- Menu injection works with dsh-better-workspace 0.11 – 0.27 and the stock
+  sidebar.
 
 ### License
 
@@ -78,19 +69,14 @@ MIT
 
 ### 功能说明
 
-- **加锁 / 解锁 / 移除锁** — 右键工作区行，自带菜单立即弹出；若侧栏自己的菜单
-  随后出现（dsh-better-workspace 0.11 / 0.14 / 0.23 / 0.27 的右键菜单，或
-  DSH 0.1.7+ 原生侧栏行尾"…"按钮的菜单），同名条目会克隆原生样式注入其中，
-  自带菜单自动让位。
-- **锁定效果** — 工作区行出现单色挂锁徽标；该工作区的会话在侧栏隐藏（搜索
-  结果同步隐藏）；该工作区的会话打开时聊天区被锁屏覆盖，输入密码解锁。
-- **管理员密码（可选）** — 在插件自己的设置页（设置 → 插件 →
-  dsh-workspace-lock 的查看页）设置，可一键解锁全部工作区，也可代替任意
-  工作区密码解锁/移除锁；仅以加盐哈希保存在服务器。
-- **页面级解锁** — 解锁只对当前页面生效，刷新浏览器后重新上锁。
+- 右键工作区 → **加锁 / 解锁 / 移除锁**；侧栏原生菜单可用时注入其中
+  （dsh-better-workspace、原生侧栏行菜单），否则使用自带菜单。
+- 加锁后：行上挂锁徽标、会话隐藏、聊天区锁屏；刷新页面重新上锁。
+- 可选管理员密码：一键解锁全部工作区（设置 → 插件 → dsh-workspace-lock）。
 
-> 界面级：只隐藏界面显示，不加密数据、不拦截服务端 API，用于防止随手翻看，
-> 不是安全边界。
+> 界面级：只隐藏界面显示，不加密数据、不拦截服务端 API。
+
+完整历史见 [CHANGELOG.md](CHANGELOG.md)。
 
 ### 安装
 
@@ -114,13 +100,9 @@ docker restart dsh-harness
 
 ### 兼容性
 
-- 在 DSH 0.1.5-rc.2、0.1.7-rc.1 与 0.2.0-rc.1/rc.2 上开发测试，目标
-  \>= 0.1.5-rc.1。客户端只 require 原生种子模块（`react`、
-  `react-dom/client`），不依赖闭源的 `@deepseek-ai/dsh-client-runtime`，无
-  构建步骤；不声明 dsh 包 peerDependencies，因此不受 0.2.0 起的插件版本门禁
-  影响。
-- dsh-better-workspace 0.11 / 0.14 / 0.23 / 0.27 的菜单注入均支持；无
-  better-workspace 的原生侧栏行尾"…"菜单同样支持；两者皆无时使用自带菜单。
+- 不声明 dsh 包 peerDependencies —— 0.2.0 起的插件版本门禁不适用。客户端只
+  require 原生种子模块（`react`、`react-dom/client`），无构建步骤。
+- 菜单注入支持 dsh-better-workspace 0.11 – 0.27 与原生侧栏。
 
 ### 许可证
 
