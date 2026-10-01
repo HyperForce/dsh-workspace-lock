@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.1 (2026-10-01)
+
+- Bugfix (bw 0.27): dsh-better-workspace mirrors the core Rows.tsx actions span onto session rows — pinned/running sessions render `.bw-row-actions` with a pin button — so the workspace-row probe (`.bw-row-count` OR `.bw-row-actions`) classified every such session row as a workspace row. Session hiding never engaged and badges could land on session rows whose label matched a locked workspace's name. Workspace rows are now identified excluding `.bw-session-row`, and non-workspace rows get stale-badge cleanup on every pass. Verified on 0.2.0-rc.2 + bw 0.27.0 (E2E all pass).
+
 ## v0.4.0 (2026-09-25)
 
 - Adapted to DSH 0.1.7: `settings.register` was removed, so the admin-password page now registers into the `plugins.bundle.config` slot (keyed by package name); the rc.2-era `settings.plugin.item` card seat is kept for older hosts.
