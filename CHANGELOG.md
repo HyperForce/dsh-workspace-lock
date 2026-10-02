@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.2 (2026-10-02)
+
+- Bugfix (stock sidebar): after dsh-better-workspace was removed (2026-10-02), every stock-dialect row shares one flat list container, so the "nearest per-workspace container" walk from a locked row seized that whole list and hid EVERY workspace's session rows (observed: the user's single `ws` lock hid all 11 sessions). The stock branch now attributes rows in document order like the bw branch — each session row belongs to the nearest PRECEDING workspace row. Verified on 0.2.0-rc.2 stock sidebar (E2E all pass; badge/session-hiding scoped to the locked workspace only).
+
 ## v0.4.1 (2026-10-01)
 
 - Bugfix (bw 0.27): dsh-better-workspace mirrors the core Rows.tsx actions span onto session rows — pinned/running sessions render `.bw-row-actions` with a pin button — so the workspace-row probe (`.bw-row-count` OR `.bw-row-actions`) classified every such session row as a workspace row. Session hiding never engaged and badges could land on session rows whose label matched a locked workspace's name. Workspace rows are now identified excluding `.bw-session-row`, and non-workspace rows get stale-badge cleanup on every pass. Verified on 0.2.0-rc.2 + bw 0.27.0 (E2E all pass).
